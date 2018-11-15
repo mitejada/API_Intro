@@ -323,22 +323,37 @@ let breedList = [
   "Irish Wolfhound"
 ]
 
-for(let i = 0; i < breedList.length; i++) {
-  let option = document.createElement("option")
-  option.text = breedList[i];
-  console.log(option);
-  let selecting = document.getElementById('selecting')
-  // selecting.innerText = option
-  selecting.appendChild(option)
+let dog;
+let tracker = 0;
+let button = document.getElementById('button')
+let body = document.querySelector('body')
+let picked = document.querySelector('.dogPicked')
+
+// for(let i = 0; i < breedList.length; i++) {
+//   let option = document.createElement("option")
+//   option.text = breedList[i];
+//   console.log(option);
+//   let selecting = document.getElementById('selecting')
+//   // selecting.innerText = option
+//   selecting.appendChild(option)
+// }
+
+
+
+function randomize (){
+  picked.innerText = breedList[Math.floor(Math.random() * breedList.length)]
+  body.appendChild(picked)
 }
 
-
-// let button = document.querySelector(".button")
-// button.addEventListener("click" => {
-//   // let select = document.getElementById('selecting');
-//   // select.innerHTML = breedList
-//
-//
-//   }
+button.addEventListener('click', () => {
+  if(tracker === 0) {
+    randomize()
+    button.innerHTML = "Another One !"
+  }else {
+    body.removeChild(picked)
+    return randomize()
+  }
+  tracker++
+})
 
 })
